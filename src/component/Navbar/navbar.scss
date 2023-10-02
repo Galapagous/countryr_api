@@ -1,0 +1,30 @@
+// .dark{
+//     background-color: hsl(207, 26%, 17%);
+//     color: hsl(0, 0%, 100%);
+// }
+
+.topBar{
+    color: hsl(207, 26%, 17%);
+    background-color: hsl(0, 0%, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 14px;
+    font-family: Nunito Sans;
+    border-bottom: 1px solid black;
+    position: sticky;
+    top: 0;
+    left: 0;
+    .themes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        img{
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
