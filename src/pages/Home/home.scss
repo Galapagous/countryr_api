@@ -14,7 +14,7 @@
             justify-content: space-between;
             position: sticky;
             left: 0;
-            top: 60px;
+            top: 55px;
             background-color: hsl(0, 0%, 98%);
             .search{
                 padding: 10px;
@@ -184,4 +184,16 @@
         }
     }
 
+}
+
+
+// ------------Media Query-----------------
+$small : 400px;
+$medium : 900px;
+
+@media screen and (min-width: $small) and (max-width: $medium){
+    .top-hero{
+        flex-direction: column;
+        gap: 2rem;
+    }
 }

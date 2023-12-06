@@ -34,7 +34,7 @@ function Single() {
         fetchCountry()
     },[])
   return (
-    <div>
+    <div className='single-main'>
         <Navbar/>
         <div className={`single-${theme}`}>
             <div className="topRegion">
