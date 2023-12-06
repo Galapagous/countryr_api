@@ -3,16 +3,20 @@ import './home.scss'
 import Moon from '../../assets/moon.png'
 
 import DarkChevron from '../../assets/dark-chevron.png'
+import WhiteChevron from '../../assets/white-chevron.png'
 import Search from '../../assets/dark-search.png'
+import SearchLight from '../../assets/white-search.png'
 import Card from '../../component/Cards/Card'
 import AllCountry from '../../assets/data'
 import Navbar from '../../component/Navbar/Navbar'
+import { themeContext } from '../../themeContext/themeContext'
+import {useContext} from 'react'
 
 function Home() {
     const [showFilter, setShowFilter] = useState(false)
     const [countries, setCountries] = useState([])
     const [allCountries, setAllCountries] = useState([])
-    // const [theme, setThemes] = useState('dark')
+    const {theme} = useContext(themeContext)
 
     useEffect(()=>{
         // make an API call
@@ -43,28 +47,28 @@ function Home() {
         setCountries(foundCountries)
     }
   return (
-    <div className={`home`}>
+    <div className={`home-${theme}`}>
         <div className="hero">
             <Navbar/>
             <div className="top-hero">
                 <div className="search">
                     <input onChange={handleSearch} type="text" placeholder='Search for a country...'/>
-                    <img src={Search} alt="search icon" />
+                    {theme === 'light' ? <img src={Search} alt="search icon" /> : <img src={SearchLight} alt="search icon" />}
                 </div>
                 <div className='filter'>
                     <div className='filter-select'> 
                         <span>Filter by Region</span>
-                        <img src={DarkChevron} alt="chevron" onClick={()=>{setShowFilter(!showFilter)}}/>
+                        {theme === 'light' ? <img src={DarkChevron} alt="chevron" onClick={()=>{setShowFilter(!showFilter)}}/> : <img src={WhiteChevron} alt="chevron" onClick={()=>{setShowFilter(!showFilter)}}/>}
                     </div>
-                    <div className='filter-values'>
-                        {showFilter && <ul>
+                    {showFilter && <div className='filter-values'>
+                        <ul>
                             <li onClick={handleFilter}>Africa</li>
                             <li onClick={handleFilter}>Americas</li>
                             <li onClick={handleFilter}>Asia</li>
                             <li onClick={handleFilter}>Europe</li>
                             <li onClick={handleFilter}>Oceania</li>
-                        </ul>}
-                    </div>
+                        </ul>
+                    </div>}
                 </div>
             </div>
             <div className="hero-main">

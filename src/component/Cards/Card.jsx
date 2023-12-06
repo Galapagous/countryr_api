@@ -1,10 +1,14 @@
 import React from 'react'
 import './card.scss'
 import { Link } from 'react-router-dom'
+import { themeContext } from '../../themeContext/themeContext'
+import {useContext} from 'react'
+
 
 function Card({info}) {
+    const {theme} = useContext(themeContext)
   return (
-    <div className='card'>
+    <div className={`card-${theme}`}>
         <Link to={`/single/${info.numericCode}`}>
             <img src={info.flags.svg} alt="country" />
         </Link>

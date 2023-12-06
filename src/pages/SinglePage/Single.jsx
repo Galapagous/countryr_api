@@ -6,12 +6,14 @@ import ArrowDark from '../../assets/arrowDark.png'
 import './single.scss'
 import { Link, useParams } from 'react-router-dom'
 import AllCountry from '../../assets/data'
+import { themeContext } from '../../themeContext/themeContext'
+import {useContext} from 'react'
 
 function Single() {
     const currentCountry = useParams()
     const [countryData, setCountryData] = useState()
     const [borders, setBorders] = useState('')
-    console.log({param: currentCountry})
+    const {theme} = useContext(themeContext)
     useEffect(()=>{
         const fetchCountry = async()=>{
             let countryInfo = await AllCountry.filter(eachCountry=>{
@@ -34,10 +36,10 @@ function Single() {
   return (
     <div>
         <Navbar/>
-        <div className="single">
+        <div className={`single-${theme}`}>
             <div className="topRegion">
                 <Link to='/'>
-                    <img src={ArrowDark} alt="back arrow" />
+                    {theme === 'light' ? <img src={ArrowDark} alt="back arrow" /> : <img src={ArrowWHite} alt="back arrow" />}
                     Back
                 </Link>
             </div>

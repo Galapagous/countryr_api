@@ -7,6 +7,8 @@ import {
   Link,
 } from "react-router-dom";
 import Single from './pages/SinglePage/Single';
+import { themeContext } from './themeContext/themeContext';
+import {useState} from 'react'
 
 const router = createBrowserRouter([
   {
@@ -19,9 +21,10 @@ const router = createBrowserRouter([
   },
 ]);
 const App = ()=>{
+  const [theme, setTheme] = useState("dark")
   return(
-  <div className='theme-dark'>
+  <themeContext.Provider value={{theme, setTheme}}>
     <RouterProvider router={router} />
-  </div>)
-}
+  </themeContext.Provider>
+)}
 export default App
